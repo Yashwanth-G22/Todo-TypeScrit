@@ -1,4 +1,4 @@
-
+import { objectType } from "../app-controller/todo-controller.js"
  
 function cloudServer() {
    const apiURL = "https://mk-todo-web-api.azurewebsites.net/api/YeswanthTodoItems";
@@ -18,13 +18,13 @@ function cloudServer() {
            })
            return response.json();
        },
-       putSingleItem: async function (id : number, name: string , value : boolean) {
+       putSingleItem: async function ({id , name, isCompleted} : objectType) {
            await set(`${apiURL}/${id}`, {
                method: 'PUT',
                body: JSON.stringify({
                    "id": id,
                    "name": name,
-                   "isCompleted": value
+                   "isCompleted": isCompleted
                })
            })
        },
@@ -51,8 +51,4 @@ function cloudServer() {
    })
 }
 
-// export default cloudServer
-
- let result  = cloudServer().putSingleItem( 1 ,"testing" ,true)
-
- console.log(result)
+export { cloudServer }

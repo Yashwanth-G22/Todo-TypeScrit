@@ -28,8 +28,8 @@ function eventManager () {
             } else {
                 flag = true;
                 let updateValue = (document.querySelector('.secondInput') as HTMLInputElement).value
-                if (input.checked !== false) {
-                    setStorage().putSingleItem(index , updateValue, true)
+                if (input.checked === true) {
+                    setStorage().putSingleItem(index, updateValue, true)
                     span.style.textDecoration = 'line-through';
                 } else {
                     

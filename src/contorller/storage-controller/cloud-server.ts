@@ -18,7 +18,7 @@ function cloudServer() {
            })
            return response.json();
        },
-       putSingleItem: async function ({id , name, isCompleted} : objectType) {
+       putSingleItem: async function (id : number , name : string, isCompleted : boolean) {
            await set(`${apiURL}/${id}`, {
                method: 'PUT',
                body: JSON.stringify({

@@ -1,6 +1,6 @@
 function todoView(eventManager) {
     const ul = document.querySelector('.taskList');
-    const { checked, updateOfList, singleTaskDelete } = (eventManager);
+    const { checked, updateOfList, singleTaskDelete } = eventManager();
     return {
         //create list element , append and return ul
         createListElement: function (elem, index, value) {
@@ -31,7 +31,7 @@ function updateInput(span, elem, index, value, checked) {
     input.setAttribute("type", "checkbox");
     input.classList.add('checkBox');
     if (value) {
-        span.style.textDecoration = 'line-through';
+        input.checked = true, span.style.textDecoration = 'line-through';
     }
     input.addEventListener('click', checked.bind(this, input, span, elem, index));
     return input;

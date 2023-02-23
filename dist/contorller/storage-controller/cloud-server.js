@@ -14,7 +14,7 @@ function cloudServer() {
             });
             return response.json();
         },
-        putSingleItem: async function ({ id, name, isCompleted }) {
+        putSingleItem: async function (id, name, isCompleted) {
             await set(`${apiURL}/${id}`, {
                 method: 'PUT',
                 body: JSON.stringify({

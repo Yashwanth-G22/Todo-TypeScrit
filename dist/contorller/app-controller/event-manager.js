@@ -25,7 +25,7 @@ function eventManager() {
             else {
                 flag = true;
                 let updateValue = document.querySelector('.secondInput').value;
-                if (input.checked !== false) {
+                if (input.checked === true) {
                     setStorage().putSingleItem(index, updateValue, true);
                     span.style.textDecoration = 'line-through';
                 }

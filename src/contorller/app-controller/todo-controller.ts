@@ -6,10 +6,10 @@ import { cloudServer } from "../storage-controller/cloud-server.js";
 
 import { eventManager } from "./event-manager.js";
 
-let storage = document.querySelector(".storage") as HTMLInputElement;
+let storage = document.querySelector(".storage") as HTMLSelectElement;
 const input = document.querySelector('.input') as HTMLInputElement;
-const btn = document.querySelector('.btn') as HTMLInputElement;
-const ul = document.querySelector('.taskList') as HTMLInputElement;
+const btn = document.querySelector('.btn') as HTMLButtonElement;
+const ul = document.querySelector('.taskList') as HTMLUListElement;
 
 interface objectType{
     name : string,
@@ -65,8 +65,8 @@ function control() {
             }
         },
 
-        instance: function (...options : any) {
-            return todoView(eventManager).createListElement(...options)
+        instance: function (name : string,id? : number, isCompleted? : boolean) {
+            return todoView(eventManager).createListElement(name,id as number, isCompleted as boolean)
         },
 
     }
@@ -88,7 +88,7 @@ storage.addEventListener('change', () => {
 
 control().createAllTasks();
 
-(document.querySelector('.clearAllBtn') as HTMLInputElement).addEventListener('click', () => {
+(document.querySelector('.clearAllBtn') as HTMLButtonElement).addEventListener('click', () => {
     let setStorage = selectStorage()
     setStorage().deleteAllItems()
 })

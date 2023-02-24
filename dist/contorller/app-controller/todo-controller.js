@@ -49,8 +49,8 @@ function control() {
                 alert('Enter task name');
             }
         },
-        instance: function (...options) {
-            return todoView(eventManager).createListElement(...options);
+        instance: function (name, id, isCompleted) {
+            return todoView(eventManager).createListElement(name, id, isCompleted);
         },
     };
 }

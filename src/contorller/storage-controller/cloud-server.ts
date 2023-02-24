@@ -1,4 +1,3 @@
-import { objectType } from "../app-controller/todo-controller.js"
  
 function cloudServer() {
    const apiURL = "https://mk-todo-web-api.azurewebsites.net/api/YeswanthTodoItems";

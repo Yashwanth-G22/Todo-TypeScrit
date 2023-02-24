@@ -15,7 +15,7 @@ function eventManager () {
             ul.removeChild(li)
         },
 
-        updateOfList: function (span : HTMLElement , index : number, elem : string, editBtn : HTMLElement) {
+        updateOfList: function (span : HTMLSpanElement , index : number, elem : string, editBtn : HTMLButtonElement) {
             const update = document.createElement('input')
             update.classList.add('secondInput')  
             update.setAttribute("type" , "text");
@@ -41,7 +41,7 @@ function eventManager () {
             }
         },
 
-        checked: function (input : HTMLInputElement , span : HTMLInputElement, elem : string, index : number) {
+        checked: function (input : HTMLInputElement , span : HTMLSpanElement, elem : string, index : number) {
             if (input.checked) {
                 span.style.textDecoration = "line-through";
                 setStorage().putSingleItem(index, elem, true)

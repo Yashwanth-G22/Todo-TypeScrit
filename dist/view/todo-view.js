@@ -33,19 +33,19 @@ function updateInput(span, elem, index, value, checked) {
     if (value) {
         input.checked = true, span.style.textDecoration = 'line-through';
     }
-    input.addEventListener('click', checked.bind(this, input, span, elem, index));
+    input.addEventListener('click', checked.bind(input, span, elem, index));
     return input;
 }
 //edit button function
 function editButton(span, index, elem, updateOfList) {
     let editBtn = createNode('button', `<i class="fas fa-pencil"></i>`);
-    editBtn.addEventListener('click', updateOfList.bind(this, span, index, elem, editBtn));
+    editBtn.addEventListener('click', updateOfList.bind(span, index, elem, editBtn));
     return editBtn;
 }
 //delete button function
 function deleteButton(index, li, singleTaskDelete) {
     const button = createNode('button', `<i class="fa-solid fa-xmark"></i>`);
-    button.addEventListener('click', singleTaskDelete.bind(this, index, li));
+    button.addEventListener('click', singleTaskDelete.bind(index, li));
     return button;
 }
 export { todoView };

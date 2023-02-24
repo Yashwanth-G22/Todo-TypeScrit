@@ -17,8 +17,6 @@ interface objectType{
     isCompleted? : boolean,
 }
 
-
-
 function selectStorage() {
     if (storage.value === "localStorage") {
         return localServer
@@ -42,10 +40,8 @@ function control() {
                 todo.map(({ name , id , isCompleted} : objectType) => {
                     this.instance( name , id , isCompleted)
                     console.log(id)
-                })
-                
+                }) 
             }
-            
         },
 
         createSingleTask: async function () {
@@ -68,7 +64,6 @@ function control() {
         instance: function (name : string,id? : number, isCompleted? : boolean) {
             return todoView(eventManager).createListElement(name,id as number, isCompleted as boolean)
         },
-
     }
 }
 

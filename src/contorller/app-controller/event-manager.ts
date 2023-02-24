@@ -22,7 +22,7 @@ function eventManager () {
             update.placeholder = elem;
             if (flag) {
                 flag = false
-                span.innerHTML = ''
+                span.innerHTML = "";
                 span.appendChild(update)
                 editBtn.innerHTML = `<i class="fa fa-check"></i>`
             } else {

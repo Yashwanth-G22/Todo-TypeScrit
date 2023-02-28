@@ -11,7 +11,7 @@ function eventManager() {
             setStorage().deleteSingleItem(index);
             ul.removeChild(li);
         },
-        updateOfList: function (span, index, elem, editBtn) {
+        updateList: function (span, index, elem, editBtn) {
             const update = document.createElement('input');
             update.classList.add('secondInput');
             update.setAttribute("type", "text");
@@ -37,7 +37,7 @@ function eventManager() {
                 editBtn.innerHTML = `<i class="fas fa-pencil"></i>`;
             }
         },
-        checked: function (input, span, elem, index) {
+        checkedOfItem: function (input, span, elem, index) {
             if (input.checked) {
                 span.style.textDecoration = "line-through";
                 setStorage().putSingleItem(index, elem, true);

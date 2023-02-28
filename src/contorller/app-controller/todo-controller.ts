@@ -6,16 +6,12 @@ import { cloudServer } from "../storage-controller/cloud-server.js";
 
 import { eventManager } from "./event-manager.js";
 
+import { objectType } from "./types.js";
+
 let storage = document.querySelector(".storage") as HTMLSelectElement;
 const input = document.querySelector('.input') as HTMLInputElement;
 const btn = document.querySelector('.btn') as HTMLButtonElement;
 const ul = document.querySelector('.taskList') as HTMLUListElement;
-
-interface objectType{
-    name : string,
-    id? : number,
-    isCompleted? : boolean,
-}
 
 function selectStorage() {
     if (storage.value === "localStorage") {
@@ -32,13 +28,13 @@ function control() {
             if (storage.value === "cloudStorage") {
                 let list = await cloudServer().getAllItems()
                 list.map(({ name , id, isCompleted } : objectType) => {
-                    this.instance(name, id, isCompleted)
+                    this.instance({name, id, isCompleted})
                 })
                 
             } else {
                 let todo = localServer().getAllItems()
                 todo.map(({ name , id , isCompleted} : objectType) => {
-                    this.instance( name , id , isCompleted)
+                    this.instance( {name , id , isCompleted})
                     console.log(id)
                 }) 
             }
@@ -50,10 +46,12 @@ function control() {
                 input.value = '';
                 let result =await setStorage().postSingleItem(value) 
                 if (result.id && result.name) {
-                    this.instance(result.name, result.id, result.isCompleted)
+                    let CreateArguments = { name : result.name , id : result.id , isCompleted : result.isCompleted}
+                    this.instance( CreateArguments )
                 }
                 else {
-                    this.instance( value , result.id)
+                    let args = { name : value , id : result.id}
+                    this.instance( args )
                     console.log(result)
                 }
             } else {
@@ -61,8 +59,8 @@ function control() {
             }
         },
 
-        instance: function (name : string,id? : number, isCompleted? : boolean) {
-            return todoView(eventManager).createListElement(name,id as number, isCompleted as boolean)
+        instance: function ({name ,id , isCompleted } : objectType) {
+            return todoView(eventManager).createListElement(name , id as number, isCompleted as boolean)
         },
     }
 }
@@ -88,6 +86,4 @@ control().createAllTasks();
     setStorage().deleteAllItems()
 })
 
-export {
-    objectType
-}
+

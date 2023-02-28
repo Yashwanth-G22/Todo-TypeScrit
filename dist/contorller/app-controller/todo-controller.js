@@ -21,13 +21,13 @@ function control() {
             if (storage.value === "cloudStorage") {
                 let list = await cloudServer().getAllItems();
                 list.map(({ name, id, isCompleted }) => {
-                    this.instance(name, id, isCompleted);
+                    this.instance({ name, id, isCompleted });
                 });
             }
             else {
                 let todo = localServer().getAllItems();
                 todo.map(({ name, id, isCompleted }) => {
-                    this.instance(name, id, isCompleted);
+                    this.instance({ name, id, isCompleted });
                     console.log(id);
                 });
             }
@@ -38,10 +38,12 @@ function control() {
                 input.value = '';
                 let result = await setStorage().postSingleItem(value);
                 if (result.id && result.name) {
-                    this.instance(result.name, result.id, result.isCompleted);
+                    let CreateArguments = { name: result.name, id: result.id, isCompleted: result.isCompleted };
+                    this.instance(CreateArguments);
                 }
                 else {
-                    this.instance(value, result.id);
+                    let args = { name: value, id: result.id };
+                    this.instance(args);
                     console.log(result);
                 }
             }
@@ -49,7 +51,7 @@ function control() {
                 alert('Enter task name');
             }
         },
-        instance: function (name, id, isCompleted) {
+        instance: function ({ name, id, isCompleted }) {
             return todoView(eventManager).createListElement(name, id, isCompleted);
         },
     };

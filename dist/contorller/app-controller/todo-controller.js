@@ -6,7 +6,7 @@ let storage = document.querySelector(".storage");
 const input = document.querySelector('.input');
 const btn = document.querySelector('.btn');
 const ul = document.querySelector('.taskList');
-function selectStorage() {
+export function selectStorage() {
     if (storage.value === "localStorage") {
         return localServer;
     }

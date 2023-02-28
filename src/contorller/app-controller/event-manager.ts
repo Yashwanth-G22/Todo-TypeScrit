@@ -1,10 +1,7 @@
-import { localServer } from "../storage-controller/local-server.js";
 
-import { cloudServer } from "../storage-controller/cloud-server.js";
-
-const storage = document.querySelector(".storage") as HTMLInputElement;
-const ul = document.querySelector('.taskList') as HTMLInputElement;
-const input = document.querySelector('.input') as HTMLInputElement;
+import { selectStorage } from "./todo-controller.js";
+import { ul } from "./todo-controller.js";
+import { input } from "./todo-controller.js";
 let flag : boolean = true
 
 function eventManager () {    
@@ -28,7 +25,7 @@ function eventManager () {
             } else {
                 flag = true;
                 let updateValue = (document.querySelector('.secondInput') as HTMLInputElement).value
-                if (input.checked === true) {
+                if (input.checked) {
                     setStorage().putSingleItem(index, updateValue, true)
                     span.style.textDecoration = 'line-through';
                 } else {
@@ -53,12 +50,5 @@ function eventManager () {
     }
 }
 
-function selectStorage () {
-    if (storage.value === "cloudStorage"){
-        return cloudServer
-    } else {
-        return localServer
-    }
-}
 
 export { eventManager }

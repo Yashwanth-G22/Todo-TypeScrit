@@ -9,11 +9,11 @@ import { eventManager } from "./event-manager.js";
 import { objectType } from "./types.js";
 
 let storage = document.querySelector(".storage") as HTMLSelectElement;
-const input = document.querySelector('.input') as HTMLInputElement;
 const btn = document.querySelector('.btn') as HTMLButtonElement;
-const ul = document.querySelector('.taskList') as HTMLUListElement;
+export const input = document.querySelector('.input') as HTMLInputElement;
+export const ul = document.querySelector('.taskList') as HTMLUListElement;
 
-function selectStorage() {
+export function selectStorage() {
     if (storage.value === "localStorage") {
         return localServer
     } else {

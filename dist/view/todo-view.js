@@ -1,51 +1,45 @@
 function todoView(eventManager) {
     const ul = document.querySelector('.taskList');
-    const { checked, updateOfList, singleTaskDelete } = eventManager();
+    const { checkedOfItem, updateList, singleTaskDelete } = eventManager();
     return {
-        //create list element , append and return ul
         createListElement: function (elem, index, value) {
             const li = createNode('li');
             li.classList.add("li-List");
             const span = createNode('span', elem);
-            appendNode(li, updateInput(span, elem, index, value, checked));
+            appendNode(li, updateInput(span, elem, index, value, checkedOfItem));
             appendNode(li, span);
-            appendNode(li, editButton(span, index, elem, updateOfList));
+            appendNode(li, editButton(span, index, elem, updateList));
             appendNode(li, deleteButton(index, li, singleTaskDelete));
             return appendNode(ul, li);
         },
     };
 }
-//new elements create function
 function createNode(elementName, elementValue = '') {
     let taskNode = document.createElement(elementName);
     taskNode.innerHTML = elementValue;
     return taskNode;
 }
-// appending parent and child nodes
 function appendNode(parentNode, childNode) {
     return parentNode.appendChild(childNode);
 }
-// updateButton function 
-function updateInput(span, elem, index, value, checked) {
+function updateInput(span, elem, index, value, checkedOfItem) {
     const input = createNode('input');
     input.setAttribute("type", "checkbox");
     input.classList.add('checkBox');
     if (value) {
         input.checked = true, span.style.textDecoration = 'line-through';
     }
-    input.addEventListener('click', checked.bind(input, span, elem, index));
+    input.addEventListener('click', checkedOfItem.bind(this, input, span, elem, index));
     return input;
 }
-//edit button function
-function editButton(span, index, elem, updateOfList) {
+function editButton(span, index, elem, updateList) {
     let editBtn = createNode('button', `<i class="fas fa-pencil"></i>`);
-    editBtn.addEventListener('click', updateOfList.bind(span, index, elem, editBtn));
+    editBtn.addEventListener('click', updateList.bind(this, span, index, elem, editBtn));
     return editBtn;
 }
-//delete button function
 function deleteButton(index, li, singleTaskDelete) {
     const button = createNode('button', `<i class="fa-solid fa-xmark"></i>`);
-    button.addEventListener('click', singleTaskDelete.bind(index, li));
+    button.addEventListener('click', singleTaskDelete.bind(this, index, li));
     return button;
 }
 export { todoView };

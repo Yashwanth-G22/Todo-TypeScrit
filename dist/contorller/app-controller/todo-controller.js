@@ -3,9 +3,9 @@ import { localServer } from "../storage-controller/local-server.js";
 import { cloudServer } from "../storage-controller/cloud-server.js";
 import { eventManager } from "./event-manager.js";
 let storage = document.querySelector(".storage");
-const input = document.querySelector('.input');
 const btn = document.querySelector('.btn');
-const ul = document.querySelector('.taskList');
+export const input = document.querySelector('.input');
+export const ul = document.querySelector('.taskList');
 export function selectStorage() {
     if (storage.value === "localStorage") {
         return localServer;

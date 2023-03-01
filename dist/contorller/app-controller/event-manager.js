@@ -1,7 +1,6 @@
 import { selectStorage } from "./todo-controller.js";
-const storage = document.querySelector(".storage");
-const ul = document.querySelector('.taskList');
-const input = document.querySelector('.input');
+import { ul } from "./todo-controller.js";
+import { input } from "./todo-controller.js";
 let flag = true;
 function eventManager() {
     let setStorage = selectStorage();
@@ -48,11 +47,4 @@ function eventManager() {
         },
     };
 }
-// function selectStorage () {
-//     if (storage.value === "cloudStorage"){
-//         return cloudServer
-//     } else {
-//         return localServer
-//     }
-// }
 export { eventManager };

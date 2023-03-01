@@ -1,8 +1,8 @@
 import { todoView } from "../../view/todo-view.js";
 
-import { localServer } from "../storage-controller/local-server.js";
+import { localServer } from "../../model/local-server.js";
 
-import { cloudServer } from "../storage-controller/cloud-server.js";
+import { cloudServer } from "../../model/cloud-server.js";
 
 import { eventManager } from "./event-manager.js";
 

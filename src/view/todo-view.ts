@@ -37,7 +37,6 @@ function updateInput(span : HTMLSpanElement, elem : string , index : number , va
     input.classList.add('checkBox');
     if (value) {input.checked = true, span.style.textDecoration = 'line-through' }
      input.addEventListener('click',checkedOfItem.bind( this , input, span, elem, index))
-
     return input;
 }
 

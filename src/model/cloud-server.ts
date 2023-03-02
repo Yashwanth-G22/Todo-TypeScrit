@@ -1,6 +1,6 @@
- 
+
 function cloudServer() {
-   const apiURL = "https://mk-todo-web-api.azurewebsites.net/api/YeswanthTodoItems";
+   const apiURL = 'https://mk-todo-web-api.azurewebsites.net/api/YeswanthTodoItems';
 
    return {
        getAllItems: async function () {
@@ -21,9 +21,9 @@ function cloudServer() {
            await set(`${apiURL}/${id}`, {
                method: 'PUT',
                body: JSON.stringify({
-                   "id": id,
-                   "name": name,
-                   "isCompleted": isCompleted
+                   'id': id,
+                   'name': name,
+                   'isCompleted': isCompleted
                })
            })
        },

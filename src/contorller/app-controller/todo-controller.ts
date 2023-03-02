@@ -8,13 +8,13 @@ import { eventManager } from "./event-manager.js";
 
 import { objectType } from "./types.js";
 
-let storage = document.querySelector(".storage") as HTMLSelectElement;
+let storage = document.querySelector('.storage') as HTMLSelectElement;
 const btn = document.querySelector('.btn') as HTMLButtonElement;
 export const input = document.querySelector('.input') as HTMLInputElement;
 export const ul = document.querySelector('.taskList') as HTMLUListElement;
 
 export function selectStorage() {
-    if (storage.value === "localStorage") {
+    if (storage.value === 'localStorage') {
         return localServer
     } else {
         return cloudServer
@@ -25,7 +25,7 @@ function control() {
     let setStorage = selectStorage()
     return {
         createAllTasks: async function () {
-            if (storage.value === "cloudStorage") {
+            if (storage.value === 'cloudStorage') {
                 let list = await cloudServer().getAllItems()
                 list.map(({ name , id, isCompleted } : objectType) => {
                     this.instance({name, id, isCompleted})
@@ -46,8 +46,8 @@ function control() {
                 input.value = '';
                 let result =await setStorage().postSingleItem(value) 
                 if (result.id && result.name) {
-                    let CreateArguments = { name : result.name , id : result.id , isCompleted : result.isCompleted}
-                    this.instance( CreateArguments )
+                    let postArguments = { name : result.name , id : result.id , isCompleted : result.isCompleted}
+                    this.instance( postArguments )
                 }
                 else {
                     let args = { name : value , id : result.id}
@@ -60,7 +60,7 @@ function control() {
         },
 
         instance: function ({name ,id , isCompleted } : objectType) {
-            return todoView(eventManager).createListElement(name , id as number, isCompleted as boolean)
+            return todoView(eventManager).createListElement(name , id , isCompleted as boolean)
         },
     }
 }

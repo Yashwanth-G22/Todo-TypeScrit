@@ -10,7 +10,7 @@ function todoView(eventManager : Function) {
 
         createListElement: function ( elem : string  , index : number , value : boolean) {
             const li  = createNode('li') as HTMLLIElement
-            li.classList.add("li-List")
+            li.classList.add('li-List')
             const span = createNode('span', elem) as HTMLSpanElement
             appendNode(li, updateInput(span , elem , index , value , checkedOfItem ))
             appendNode(li, span)
@@ -33,7 +33,7 @@ function createNode(elementName : string , elementValue : any = '') {
 
 function updateInput(span : HTMLSpanElement, elem : string , index : number , value : boolean , checkedOfItem : Function){
     const input = createNode('input') as HTMLInputElement
-    input.setAttribute("type" , "checkbox");
+    input.setAttribute('type' , 'checkbox');
     input.classList.add('checkBox');
     if (value) {input.checked = true, span.style.textDecoration = 'line-through' }
      input.addEventListener('click',checkedOfItem.bind( this , input, span, elem, index))
@@ -49,7 +49,7 @@ function editButton(span : HTMLSpanElement, index : number, elem : string , upda
 
 function deleteButton( index : number , li : HTMLLIElement , singleTaskDelete : Function){
     const button = createNode('button', `<i class="fa-solid fa-xmark"></i>`)
-     button.addEventListener('click', singleTaskDelete.bind( this , index , li))
+     button.addEventListener('click', singleTaskDelete.bind( this  , index , li))
     
     return button
 }

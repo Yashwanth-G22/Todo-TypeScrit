@@ -38,8 +38,8 @@ function control() {
                 input.value = '';
                 let result = await setStorage().postSingleItem(value);
                 if (result.id && result.name) {
-                    let CreateArguments = { name: result.name, id: result.id, isCompleted: result.isCompleted };
-                    this.instance(CreateArguments);
+                    let postArguments = { name: result.name, id: result.id, isCompleted: result.isCompleted };
+                    this.instance(postArguments);
                 }
                 else {
                     let args = { name: value, id: result.id };

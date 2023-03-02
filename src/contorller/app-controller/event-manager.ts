@@ -14,11 +14,11 @@ function eventManager () {
         updateList: function (span : HTMLSpanElement , index : number, elem : string, editBtn : HTMLButtonElement) {
             const update = document.createElement('input')
             update.classList.add('secondInput')  
-            update.setAttribute("type" , "text");
+            update.setAttribute('type' , 'text');
             update.placeholder = elem;
             if (flag) {
                 flag = false
-                span.innerHTML = "";
+                span.innerHTML = '';
                 span.appendChild(update)
                 editBtn.innerHTML = `<i class="fa fa-check"></i>`
             } else {
@@ -42,7 +42,7 @@ function eventManager () {
                 span.style.textDecoration = "line-through";
                 setStorage().putSingleItem(index, elem, true)
             }else{
-                span.style.textDecoration = "";
+                span.style.textDecoration = '';
                 setStorage().putSingleItem(index, elem, false)
             }
         },

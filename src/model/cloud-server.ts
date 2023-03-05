@@ -41,13 +41,16 @@ function cloudServer() {
 
 }
 
- function set(url : string, options : any) {
-   const header = new Headers
+ function set(url : string, options : any) : Promise<Response > | any{
+   try{
+    const header = new Headers
    header.append('content-type', 'application/json');
    return fetch(url, {
        ...options,
        headers: header,
-   })
+   })}catch(err){
+    console.log("something error")
+   }
 }
 
 export { cloudServer }

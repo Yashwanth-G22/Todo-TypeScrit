@@ -25,15 +25,15 @@ function eventManager () {
                 flag = true;
                 let updateValue = (document.querySelector('.secondInput') as HTMLInputElement).value
                 if (input.checked) {
-                    setStorage().putSingleItem(index, updateValue, true)
+                    setStorage().putSingleItem(index, updateValue, true);
                     span.style.textDecoration = 'line-through';
                 } else {
                     
-                    setStorage().putSingleItem(index, updateValue, false ) 
+                    setStorage().putSingleItem(index, updateValue, false );
                 }
-                span.innerHTML = updateValue
-                updateValue = ''
-                editBtn.innerHTML = `<i class="fas fa-pencil"></i>`
+                span.innerHTML = updateValue;
+                updateValue = '';
+                editBtn.innerHTML = `<i class="fas fa-pencil"></i>`;
             }
         },
 
@@ -42,8 +42,7 @@ function eventManager () {
                 span.style.textDecoration = "line-through";
                 setStorage().putSingleItem(index, elem, true)
             }else{
-                span.style.textDecoration = '';
-                setStorage().putSingleItem(index, elem, false)
+                 setStorage().putSingleItem(index, elem, false)
             }
         },
     }

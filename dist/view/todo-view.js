@@ -30,17 +30,17 @@ function updateInput(span, elem, index, value, checkedOfItem) {
         input.checked = true;
         span.style.textDecoration = 'line-through';
     }
-    input.addEventListener('click', () => checkedOfItem(input, span, elem, index));
+    input.addEventListener('click', ()=> checked(input, span, elem, index));
     return input;
 }
 function editButton(span, index, elem, updateList) {
     let editBtn = createNode('button', `<i class="fas fa-pencil"></i>`);
-    editBtn.addEventListener('click', () => updateList(span, index, elem, editBtn));
+    editBtn.addEventListener('click',()=> updateOfList(span, index, elem, editBtn));
     return editBtn;
 }
 function deleteButton(index, li, singleTaskDelete) {
     const button = createNode('button', `<i class="fa-solid fa-xmark"></i>`);
-    button.addEventListener('click', () => singleTaskDelete(index, li));
+    button.addEventListener('click', ()=> singleTaskDelete(index, li));
     return button;
 }
 export { todoView };

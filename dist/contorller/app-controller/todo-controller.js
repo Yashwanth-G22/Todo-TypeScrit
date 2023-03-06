@@ -2,12 +2,12 @@ import { todoView } from "../../view/todo-view.js";
 import { localServer } from "../../model/local-server.js";
 import { cloudServer } from "../../model/cloud-server.js";
 import { eventManager } from "./event-manager.js";
-let storage = document.querySelector(".storage");
+let storage = document.querySelector('.storage');
 const btn = document.querySelector('.btn');
 export const input = document.querySelector('.input');
 export const ul = document.querySelector('.taskList');
 export function selectStorage() {
-    if (storage.value === "localStorage") {
+    if (storage.value === 'localStorage') {
         return localServer;
     }
     else {
@@ -18,7 +18,7 @@ function control() {
     let setStorage = selectStorage();
     return {
         createAllTasks: async function () {
-            if (storage.value === "cloudStorage") {
+            if (storage.value === 'cloudStorage') {
                 let list = await cloudServer().getAllItems();
                 list.map(({ name, id, isCompleted }) => {
                     this.instance({ name, id, isCompleted });

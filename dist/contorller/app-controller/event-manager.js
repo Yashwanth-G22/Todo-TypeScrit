@@ -12,11 +12,11 @@ function eventManager() {
         updateList: function (span, index, elem, editBtn) {
             const update = document.createElement('input');
             update.classList.add('secondInput');
-            update.setAttribute("type", "text");
+            update.setAttribute('type', 'text');
             update.placeholder = elem;
             if (flag) {
                 flag = false;
-                span.innerHTML = "";
+                span.innerHTML = '';
                 span.appendChild(update);
                 editBtn.innerHTML = `<i class="fa fa-check"></i>`;
             }

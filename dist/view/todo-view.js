@@ -4,7 +4,7 @@ function todoView(eventManager) {
     return {
         createListElement: function (elem, index, value) {
             const li = createNode('li');
-            li.classList.add("li-List");
+            li.classList.add('li-List');
             const span = createNode('span', elem);
             appendNode(li, updateInput(span, elem, index, value, checkedOfItem));
             appendNode(li, span);
@@ -24,22 +24,23 @@ function appendNode(parentNode, childNode) {
 }
 function updateInput(span, elem, index, value, checkedOfItem) {
     const input = createNode('input');
-    input.setAttribute("type", "checkbox");
+    input.setAttribute('type', 'checkbox');
     input.classList.add('checkBox');
     if (value) {
-        input.checked = true, span.style.textDecoration = 'line-through';
+        input.checked = true;
+        span.style.textDecoration = 'line-through';
     }
-    input.addEventListener('click', checkedOfItem.bind(this, input, span, elem, index));
+    input.addEventListener('click', () => checkedOfItem(input, span, elem, index));
     return input;
 }
 function editButton(span, index, elem, updateList) {
     let editBtn = createNode('button', `<i class="fas fa-pencil"></i>`);
-    editBtn.addEventListener('click', updateList.bind(this, span, index, elem, editBtn));
+    editBtn.addEventListener('click', () => updateList(span, index, elem, editBtn));
     return editBtn;
 }
 function deleteButton(index, li, singleTaskDelete) {
     const button = createNode('button', `<i class="fa-solid fa-xmark"></i>`);
-    button.addEventListener('click', singleTaskDelete.bind(this, index, li));
+    button.addEventListener('click', () => singleTaskDelete(index, li));
     return button;
 }
 export { todoView };

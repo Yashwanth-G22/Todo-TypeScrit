@@ -1,5 +1,5 @@
 function cloudServer() {
-    const apiURL = "https://mk-todo-web-api.azurewebsites.net/api/YeswanthTodoItems";
+    const apiURL = 'https://mk-todo-web-api.azurewebsites.net/api/YeswanthTodoItems';
     return {
         getAllItems: async function () {
             const response = await fetch(apiURL, { method: 'GET' });
@@ -18,9 +18,9 @@ function cloudServer() {
             await set(`${apiURL}/${id}`, {
                 method: 'PUT',
                 body: JSON.stringify({
-                    "id": id,
-                    "name": name,
-                    "isCompleted": isCompleted
+                    'id': id,
+                    'name': name,
+                    'isCompleted': isCompleted
                 })
             });
         },
@@ -37,11 +37,16 @@ function cloudServer() {
     };
 }
 function set(url, options) {
-    const header = new Headers;
-    header.append('content-type', 'application/json');
-    return fetch(url, {
-        ...options,
-        headers: header,
-    });
+    try {
+        const header = new Headers;
+        header.append('content-type', 'application/json');
+        return fetch(url, {
+            ...options,
+            headers: header,
+        });
+    }
+    catch (err) {
+        console.log("something error");
+    }
 }
 export { cloudServer };

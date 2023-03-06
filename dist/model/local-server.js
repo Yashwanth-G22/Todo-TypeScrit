@@ -6,7 +6,6 @@ function localServer() {
             return todoList;
         },
         postSingleItem: function (todo) {
-            console.log("object");
             let set_Todo = this.getAllItems();
             let single_todo = todoObject(todo, set_Todo.length);
             set_Todo.push(single_todo);

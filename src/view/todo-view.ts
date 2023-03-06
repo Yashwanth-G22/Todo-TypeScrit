@@ -39,21 +39,19 @@ function updateInput(span: HTMLSpanElement, elem: string, index: number, value: 
         input.checked = true;
         span.style.textDecoration = 'line-through'
     }
-    input.addEventListener('click', checkedOfItem.bind(this, input, span, elem, index))
+    input.addEventListener('click',()=> checkedOfItem( input, span, elem, index))
     return input;
 }
 
 function editButton(span: HTMLSpanElement, index: number, elem: string, updateList: Function) {
     let editBtn = createNode('button', `<i class="fas fa-pencil"></i>`)
-    editBtn.addEventListener('click', updateList.bind(this, span, index, elem, editBtn))
-
+    editBtn.addEventListener('click',()=> updateList(span, index, elem, editBtn))
     return editBtn
 }
 
 function deleteButton(index: number, li: HTMLLIElement, singleTaskDelete: Function) {
     const button = createNode('button', `<i class="fa-solid fa-xmark"></i>`)
-    button.addEventListener('click', singleTaskDelete.bind(this, index, li))
-
+    button.addEventListener('click',()=> singleTaskDelete( index, li))
     return button
 }
 

@@ -42,6 +42,7 @@ function eventManager () {
                 span.style.textDecoration = "line-through";
                 setStorage().putSingleItem(index, elem, true)
             }else{
+                span.style.textDecoration = ""
                  setStorage().putSingleItem(index, elem, false)
             }
         },

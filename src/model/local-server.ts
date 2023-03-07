@@ -3,7 +3,7 @@ import { todoObject } from "./todo-object.js";
 function localServer() {
     return {
         getAllItems: function() {
-            const todoList = (`${localStorage.getItem('todos')}`)? JSON.parse(`${localStorage.getItem('todos')}`) : []
+            const todoList = (`${localStorage.getItem('todos')}`)? JSON.parse(`${localStorage.getItem('todos')}`) : [] ;
             return todoList;
         },
         postSingleItem: function (todo : string) {

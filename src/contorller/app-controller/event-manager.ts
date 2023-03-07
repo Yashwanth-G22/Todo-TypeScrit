@@ -11,7 +11,7 @@ function eventManager () {
             ul.removeChild(li)
         },
 
-        updateList: function (span : HTMLSpanElement , index : number, elem : string, editBtn : HTMLButtonElement) {
+        updateOfList: function (span : HTMLSpanElement , index : number, elem : string, editBtn : HTMLButtonElement) {
             const update = document.createElement('input')
             update.classList.add('secondInput')  
             update.setAttribute('type' , 'text');

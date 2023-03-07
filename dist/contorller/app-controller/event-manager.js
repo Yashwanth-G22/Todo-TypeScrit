@@ -9,7 +9,7 @@ function eventManager() {
             setStorage().deleteSingleItem(index);
             ul.removeChild(li);
         },
-        updateList: function (span, index, elem, editBtn) {
+        updateOfList: function (span, index, elem, editBtn) {
             const update = document.createElement('input');
             update.classList.add('secondInput');
             update.setAttribute('type', 'text');

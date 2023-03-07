@@ -3,7 +3,7 @@
 function todoView(eventManager: Function) {
     const ul = document.querySelector('.taskList') as HTMLInputElement;
 
-    const { checkedOfItem, updateList, singleTaskDelete } = eventManager()
+    const { checkedOfItem, updateOfList, singleTaskDelete } = eventManager()
 
 
     return {
@@ -14,7 +14,7 @@ function todoView(eventManager: Function) {
             const span = createNode('span', elem) as HTMLSpanElement
             appendNode(li, updateInput(span, elem, index, value, checkedOfItem))
             appendNode(li, span)
-            appendNode(li, editButton(span, index, elem, updateList))
+            appendNode(li, editButton(span, index, elem, updateOfList))
             appendNode(li, deleteButton(index, li, singleTaskDelete))
             return appendNode(ul, li)
         },
@@ -43,9 +43,9 @@ function updateInput(span: HTMLSpanElement, elem: string, index: number, value: 
     return input;
 }
 
-function editButton(span: HTMLSpanElement, index: number, elem: string, updateList: Function) {
+function editButton(span: HTMLSpanElement, index: number, elem: string, updateOfList: Function) {
     let editBtn = createNode('button', `<i class="fas fa-pencil"></i>`)
-    editBtn.addEventListener('click',()=> updateList(span, index, elem, editBtn))
+    editBtn.addEventListener('click',()=> updateOfList(span, index, elem, editBtn))
     return editBtn
 }
 

@@ -39,7 +39,7 @@ function updateInput(span: HTMLSpanElement, elem: string, index: number, value: 
         input.checked = true;
         span.style.textDecoration = 'line-through'
     }
-    input.addEventListener('click',()=> checkedOfItem( input, span, elem, index))
+    input.addEventListener('click', ()=> checkedOfItem( input, span, elem, index))
     return input;
 }
 

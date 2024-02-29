@@ -1,6 +1,6 @@
 function todoView(eventManager) {
     const ul = document.querySelector('.taskList');
-    const { checkedOfItem, updateList, singleTaskDelete } = eventManager();
+    const { checkedOfItem, updateOfList, singleTaskDelete } = eventManager();
     return {
         createListElement: function (elem, index, value) {
             const li = createNode('li');
@@ -8,7 +8,7 @@ function todoView(eventManager) {
             const span = createNode('span', elem);
             appendNode(li, updateInput(span, elem, index, value, checkedOfItem));
             appendNode(li, span);
-            appendNode(li, editButton(span, index, elem, updateList));
+            appendNode(li, editButton(span, index, elem, updateOfList));
             appendNode(li, deleteButton(index, li, singleTaskDelete));
             return appendNode(ul, li);
         },
@@ -33,9 +33,9 @@ function updateInput(span, elem, index, value, checkedOfItem) {
     input.addEventListener('click', () => checkedOfItem(input, span, elem, index));
     return input;
 }
-function editButton(span, index, elem, updateList) {
+function editButton(span, index, elem, updateOfList) {
     let editBtn = createNode('button', `<i class="fas fa-pencil"></i>`);
-    editBtn.addEventListener('click', () => updateList(span, index, elem, editBtn));
+    editBtn.addEventListener('click', () => updateOfList(span, index, elem, editBtn));
     return editBtn;
 }
 function deleteButton(index, li, singleTaskDelete) {

@@ -8,3 +8,4 @@ export function getAllItems() {
 export function setTodoItems(items: object[]) {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(items))
 }
+

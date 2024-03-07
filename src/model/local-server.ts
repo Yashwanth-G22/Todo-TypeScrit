@@ -3,7 +3,6 @@ import { getAllItems, setTodoItems } from '../utils/common'
 
 function localServer() {
     return {
-
         postSingleItem: function (todo: string) {
             let set_Todo: object[] = getAllItems()
             let single_todo = todoObject(todo, set_Todo.length)
@@ -26,6 +25,10 @@ function localServer() {
             setTodoItems([]);
         },
     }
+}
+
+function setLocalServer (items : object[]) {
+    return localStorage.setItem('todos', JSON.stringify(items))
 }
 
 export { localServer }

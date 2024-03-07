@@ -4,11 +4,10 @@ import { cloudServer } from "../../model/cloud-server.js";
 import { eventManager } from "./event-manager.js";
 import { objectType } from "./types.js";
 import { getAllItems } from "../../utils/common";
-
-let storage = document.querySelector('.storage') as HTMLSelectElement;
-const btn = document.querySelector('.btn') as HTMLButtonElement;
-export const input = document.querySelector('.input') as HTMLInputElement;
-export const ul = document.querySelector('.taskList') as HTMLUListElement;
+let storage = selector('.storage');
+const btn = selector('.btn');
+export const input = selector('.input');
+export const ul = selector('.taskList');
 
 export function selectStorage() {
     if (storage.value === 'localStorage') {

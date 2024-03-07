@@ -12,10 +12,12 @@ function todoView(eventManager: Function) {
             const li = createNode('li') as HTMLLIElement
             li.classList.add('li-List')
             const span = createNode('span', elem) as HTMLSpanElement
+            const div =  createNode('div', elem) as HTMLDivElement
             appendNode(li, updateInput(span, elem, index, value, checkedOfItem))
             appendNode(li, span)
-            appendNode(li, editButton(span, index, elem, updateOfList))
-            appendNode(li, deleteButton(index, li, singleTaskDelete))
+            appendNode(li, div)
+            appendNode(div, editButton(span, index, elem, updateOfList))
+            appendNode(div, deleteButton(index, li, singleTaskDelete))
             return appendNode(ul, li)
         },
     }
@@ -39,7 +41,7 @@ function updateInput(span: HTMLSpanElement, elem: string, index: number, value: 
         input.checked = true;
         span.style.textDecoration = 'line-through'
     }
-    input.addEventListener('click',()=> checkedOfItem( input, span, elem, index))
+    input.addEventListener('click', ()=> checkedOfItem( input, span, elem, index))
     return input;
 }
 

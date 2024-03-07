@@ -63,6 +63,11 @@ input[type="text"]{
 .li-List>span{
     margin-left:1px;
 }
+.li-List>div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
 .deleteAll{
     background-color: rgb(82, 79, 11);
     color: white;

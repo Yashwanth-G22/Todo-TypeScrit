@@ -1,12 +1,9 @@
 import { todoView } from "../../view/todo-view.js";
-
 import { localServer } from "../../model/local-server.js";
-
 import { cloudServer } from "../../model/cloud-server.js";
-
 import { eventManager } from "./event-manager.js";
-
 import { objectType } from "./types.js";
+import { getAllItems } from "../../utils/common";
 
 let storage = document.querySelector('.storage') as HTMLSelectElement;
 const btn = document.querySelector('.btn') as HTMLButtonElement;
@@ -32,7 +29,7 @@ function control() {
                 })
                 
             } else {
-                let todo = localServer().getAllItems()
+                let todo = getAllItems()
                 todo.map(({ name , id , isCompleted} : objectType) => {
                     this.instance( {name , id , isCompleted})
                     console.log(id)

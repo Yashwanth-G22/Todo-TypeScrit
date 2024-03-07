@@ -1,14 +1,9 @@
 import { todoView } from "../../view/todo-view.js";
-
 import { localServer } from "../../model/local-server.js";
-
 import { cloudServer } from "../../model/cloud-server.js";
-
 import { eventManager } from "./event-manager.js";
-
 import { objectType } from "./types.js";
-import { selector } from "../../utils/common.js";
-
+import { getAllItems } from "../../utils/common";
 let storage = selector('.storage');
 const btn = selector('.btn');
 export const input = selector('.input');
@@ -33,7 +28,7 @@ function control() {
                 })
                 
             } else {
-                let todo = localServer().getAllItems()
+                let todo = getAllItems()
                 todo.map(({ name , id , isCompleted} : objectType) => {
                     this.instance( {name , id , isCompleted})
                     console.log(id)

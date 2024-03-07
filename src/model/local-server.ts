@@ -1,34 +1,28 @@
-import { todoObject } from "./todo-object.js";
+import { todoObject } from "./todo-object.js"; getAllItems
+import { getAllItems, setTodoItems } from '../utils/common'
 
 function localServer() {
     return {
-        getAllItems: function() {
-             return (`${localStorage.getItem('todos')}`)? JSON.parse(`${localStorage.getItem('todos')}`) : [] ;
-           
-        },
-        postSingleItem: function (todo : string) {
-            let set_Todo : object[] = this.getAllItems()
-            let single_todo = todoObject( todo, set_Todo.length )
+        postSingleItem: function (todo: string) {
+            let set_Todo: object[] = getAllItems()
+            let single_todo = todoObject(todo, set_Todo.length)
             set_Todo.push(single_todo)
-            setLocalServer(set_Todo)
+            setTodoItems(set_Todo);
             return single_todo
         },
-        putSingleItem: function (index : number , elem : string , value : boolean){
-            let edit_Todo : object[]  = this.getAllItems()
-            edit_Todo.splice(index , 1 , todoObject( elem, index , value))
-            setLocalServer(edit_Todo)
+        putSingleItem: function (index: number, elem: string, value: boolean) {
+            let edit_Todo: object[] = getAllItems()
+            edit_Todo.splice(index, 1, todoObject(elem, index, value))
+            setTodoItems(edit_Todo);
         },
 
-        deleteSingleItem: function (index : number) {
-            let delete_Todo : object[] = this.getAllItems()
-            console.log(index)
-            delete_Todo.splice(index , 1)
-            setLocalServer(delete_Todo)
+        deleteSingleItem: function (index: number) {
+            let delete_Todo: object[] = getAllItems()
+            delete_Todo.splice(index, 1)
+            setTodoItems(delete_Todo);
         },
         deleteAllItems: function () {
-            let deleteAll_Todo : object[] = this.getAllItems()
-            deleteAll_Todo = []
-            setLocalServer(deleteAll_Todo)
+            setTodoItems([]);
         },
     }
 }

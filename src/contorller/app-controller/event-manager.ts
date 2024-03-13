@@ -8,7 +8,7 @@ function eventManager () {
     return {
         singleTaskDelete: function (index : number , li : HTMLElement) {
             setStorage().deleteSingleItem(index)
-            ul.removeChild(li)
+            ul.removeChild(li);
         },
 
         updateOfList: function (span : HTMLSpanElement , index : number, elem : string, editBtn : HTMLButtonElement) {
@@ -46,6 +46,11 @@ function eventManager () {
                  setStorage().putSingleItem(index, elem, false)
             }
         },
+
+        createDeleteList: function () {
+            let name = 'Yashwanth';
+            return name;
+        }
     }
 }
 
